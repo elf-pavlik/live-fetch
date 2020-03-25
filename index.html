@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <script>
+      (async function () {
+        const foo = await fetch('https://elf-pavlik-live-fetch.glitch.me/stream') //, { credentials: 'include' })
+        const reader = foo.body.getReader()
+        const decoder = new TextDecoder()
+        reader.read().then(function handle({done, value}) {
+            console.log(decoder.decode(value))
+            return reader.read().then(handle)
+        })
+      })()
+    </script>
+  </head>
+  <body>
+    <p>source: <a href="https://github.com/elf-pavlik/live-fetch">https://github.com/elf-pavlik/live-fetch</a></p>
+    <p>glich: <a href="https://glitch.com/edit/#!/elf-pavlik-live-fetch?path=index.html:1:0">https://glitch.com/edit/#!/elf-pavlik-live-fetch?path=index.html:1:0</a></p>
+  </body>
+</html>
